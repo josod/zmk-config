@@ -1,0 +1,89 @@
+/*
+ * Copyright (c) 2023 josod
+ *
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define L_BASE		0
+#define L_EXT  		1
+#define L_SYM  		2
+#define L_NUM  		3
+#define L_FN  		4
+
+
+/  {
+
+	       
+
+	macros {
+	       ZMK_MACRO(m_ctrl_z, wait-ms = <30>; tap-ms = <40>; bindings = <&macro_press &kp LCTRL &macro_tap &kp Z &macro_release &kp LCTRL>;)
+	       ZMK_MACRO(m_ctrl_x, wait-ms = <30>; tap-ms = <40>; bindings = <&macro_press &kp LCTRL &macro_tap &kp X &macro_release &kp LCTRL>;)
+      	       ZMK_MACRO(m_ctrl_c, wait-ms = <30>; tap-ms = <40>; bindings = <&macro_press &kp LCTRL &macro_tap &kp C &macro_release &kp LCTRL>;)
+      	       ZMK_MACRO(m_ctrl_v, wait-ms = <30>; tap-ms = <40>; bindings = <&macro_press &kp LCTRL &macro_tap &kp V &macro_release &kp LCTRL>;)
+	};
+
+	keymap {
+		compatible = "zmk,keymap";
+
+
+//											       << >>
+ 		base_layer {
+			bindings = <
+  &none       &kp Q       &kp W       &kp F        &kp P        &kp B                                                         &kp J        &kp L        &kp U        &kp Y       &kp APOS      &none 
+  &none       &kp A       &kp R       &kp S        &kp T        &kp G                                                         &kp M        &kp N        &kp E        &kp I       &kp O         &none
+  &none       &kp Z       &kp X       &kp C        &kp D        &kp V      &mo L_FN     &none       &none        &none        &kp K        &kp H        &kp COMMA    &kp DOT     &kp SLASH     &none
+	                              &none        &mo L_NUM    &mo L_EXT  &kp LSHFT    &mo L_SYM   &none        &kp SPACE    &none        &none        &none
+   			>;
+
+		sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+
+		};
+
+
+//											       << >>
+		ext_layer {
+			bindings = <
+  &none       &kp ESC     &kp W        &kp K_FIND   &kp K_FORWARD &kp INS                                                      &kp PG_UP    &kp HOME     &kp UP       &kp END    &kp CAPS      &none 
+  &none       &sk LALT    &sk LMETA    &sk LSHFT    &sk LCTRL     &kp RALT                                                     &kp PG_DN    &kp LEFT     &kp DOWN     &kp RIGHT  &kp DEL       &none
+  &none       &m_ctrl_z   &m_ctrl_x    &m_ctrl_c    &kp LMETA     &m_ctrl_v  &none       &none        &none       &none        &kp K        &kp BSPC     &kp TAB      &none      &kp PSCRN     &none
+	                               &none        &none         &none      &none       &none        &none       &kp ENTER    &none        &none        &none	      
+ 			>;
+		};
+
+//											       << >>
+ 		sym_layer {
+			bindings = <
+  &none       &kp EXCL    &kp AT       &kp HASH    &kp DLLR     &kp PRCNT                                                      &kp EQUAL    &kp GRAVE    &kp COLON    &kp SEMI   &kp PLUS      &none 
+  &none       &sk LALT    &sk LMETA    &sk LSHFT   &sk LCTRL    &kp CARET                                                      &kp STAR     &kp LPAR     &kp LBRC     &kp LBKT   &kp MINUS     &none
+  &none       &none       &kp QMARK    &kp BSLH    &kp PIPE     &kp AMPS      &none        &none       &none       &none       &kp TILDE    &kp RPAR     &kp RBRC     &kp RBKT   &kp UNDER     &none
+	                               &none       &none        &none         &none        &none       &none       &none       &none        &none        &none
+			>;
+		};
+
+//											       << >>
+ 		num_layer {
+			bindings = <
+  &none       &kp Q       &kp W        &kp F        &kp P        &kp B                                                         &kp EQUAL    &kp N7       &kp N8       &kp N9      &kp PLUS      &none 
+  &none       &sk LALT    &sk LMETA    &sk LSHFT    &sk LCTRL    &kp RALT                                                      &kp STAR     &kp N4       &kp N5       &kp N6      &kp MINUS     &none
+  &none       &kp Z       &kp X        &kp TAB      &kp BSPC     &kp ENTER    &none        &none        &none       &none      &kp N0       &kp N1       &kp N2       &kp N3      &kp FSLH      &none
+	                               &none        &none        &none        &none        &none       &none        &none      &none        &none
+			>;
+		};
+
+//											       << >>
+		fn_layer {
+			bindings = <
+  &none       &kp Q       &kp W       &kp F        &kp P        &kp B                                                         &kp F12      &kp F7       &kp F8       &kp F9       &kp APOS      &none 
+  &none       &sk LALT    &sk LMETA   &sk LSHFT    &sk LCTRL    &kp RALT                                                      &kp F11      &kp F4       &kp F5       &kp F6       &kp MINUS     &none
+  &none       &kp Z       &kp X       &kp C        &kp D        &kp V      &none        &none        &none       &none        &kp F10      &kp F1       &kp F2       &kp F3       &kp FSLH      &none
+	                                           &none        &none      &none        &none        &none       &none        &none        &none        &none
+			>;
+		};
+
+
+	};
+};
+
+ 
